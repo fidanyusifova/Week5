@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Course Grade Checker</title>
+</head>
+<body>
+  <script>
+    // Function to check if the user passes or fails the course
+    function checkGrade() {
+      // Prompt the user for their full name and course grade
+      const fullName = prompt("Enter your full name:");
+      const courseGrade = parseFloat(prompt("Enter your course grade (0-100):"));
+
+      // Greet the user
+      alert(`Hello, ${fullName}!`);
+
+      // Check if the grade is valid and determine pass/fail status
+      if (!isNaN(courseGrade) && courseGrade >= 0 && courseGrade <= 100) {
+        if (courseGrade >= 50) {
+          // If the grade is 50 or above, the user passes
+          alert("Congratulations! You passed the course.");
+          
+          // Determine the letter grade for passing grades (A, B, C, D)
+          let letterGrade;
+          if (courseGrade >= 80) {
+            letterGrade = 'A';
+          } else if (courseGrade >= 70) {
+            letterGrade = 'B';
+          } else if (courseGrade >= 60) {
+            letterGrade = 'C';
+          } else {
+            letterGrade = 'D';
+          }
+          alert(`Your letter grade is: ${letterGrade}`);
+        } else {
+          // If the grade is below 50, the user fails
+          alert("You failed the course.");
+        }
+      } else {
+        // If an invalid grade is entered
+        alert("Invalid grade entered. Please enter a valid grade between 0 and 100.");
+      }
+    }
+
+    // Call the function to start the program
+    checkGrade();
+  </script>
+</body>
+</html>

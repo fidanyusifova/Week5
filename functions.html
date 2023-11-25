@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Array Operations</title>
+</head>
+<body>
+  <div id="results">
+    <h1>Array Operations Results</h1>
+    <p id="sum"></p>
+    <p id="average"></p>
+    <p id="minimum"></p>
+    <p id="maximum"></p>
+    <p id="mostRepeated"></p>
+    <p id="leastRepeated"></p>
+  </div>
+
+  <script>
+    function arrayOperations(arr) {
+       // Finding sum, average, min, and max
+    const sum = arr.reduce((acc, val) => acc + val, 0);
+    const average = sum / arr.length;
+    const min = Math.min(...arr);
+    const max = Math.max(...arr);
+
+    // Finding most repeated and least repeated element
+    const frequencyMap = {};
+    arr.forEach((num) => {
+        frequencyMap[num] = (frequencyMap[num] || 0) + 1;
+    });
+
+    let mostRepeated = arr[0];
+    let leastRepeated = arr[0];
+    let maxFrequency = 0;
+    let minFrequency = arr.length + 1;
+
+    Object.keys(frequencyMap).forEach((key) => {
+        if (frequencyMap[key] > maxFrequency) {
+            mostRepeated = parseInt(key);
+            maxFrequency = frequencyMap[key];
+        }
+        if (frequencyMap[key] < minFrequency) {
+            leastRepeated = parseInt(key);
+            minFrequency = frequencyMap[key];
+        }
+    });
+
+    return {
+        sum: sum,
+        average: average,
+        min: min,
+        max: max,
+        mostRepeated: mostRepeated,
+        leastRepeated: leastRepeated
+    };
+    }
+
+    // Example array of integers
+    const inputArray = [3, 5, 2, 5, 5, 8, 2, 5, 4, 1, 1, 9, 9];
+
+    // Perform operations on the array
+    const result = arrayOperations(inputArray);
+
+    // Display results in the HTML document
+    document.getElementById('sum').textContent = 'Sum: ' + result.sum;
+    document.getElementById('average').textContent = 'Average: ' + result.average;
+    document.getElementById('minimum').textContent = 'Minimum: ' + result.min;
+    document.getElementById('maximum').textContent = 'Maximum: ' + result.max;
+    document.getElementById('mostRepeated').textContent = 'Most Repeated Element: ' + result.mostRepeated;
+    document.getElementById('leastRepeated').textContent = 'Least Repeated Element: ' + result.leastRepeated;
+  </script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sort String Alphabetically</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    input[type="text"] {
+      padding: 8px;
+      font-size: 16px;
+      margin-right: 10px;
+    }
+
+    button {
+      padding: 8px 16px;
+      font-size: 16px;
+      cursor: pointer;
+      background-color: #3498db;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+    }
+
+    button:hover {
+      background-color: #2980b9;
+    }
+
+    #result {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Sort String Alphabetically</h1>
+  <input type="text" id="inputString" placeholder="Enter a string">
+  <button onclick="sortAndDisplay()">Sort</button>
+  <p id="result"></p>
+
+  <script>
+    function sortStringAlphabetically(str) {
+      const sortedString = str.split('').sort().join('');
+      return sortedString;
+    }
+
+    function sortAndDisplay() {
+      const inputString = document.getElementById('inputString').value;
+      const sortedResult = sortStringAlphabetically(inputString);
+      document.getElementById('result').textContent = "Sorted String: " + sortedResult;
+    }
+  </script>
+</body>
+</html>
+
+
